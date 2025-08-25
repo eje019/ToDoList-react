@@ -39,6 +39,11 @@ function App() {
   }
 
   let filteredTodos: Todo[] = [];
+  if (filter === "Tous") {
+    filteredTodos = todos;
+  } else {
+    filteredTodos = todos.filter((todo) => todo.priority === filter);
+  }
 
   return (
     <div className="flex justify-center">
@@ -75,6 +80,16 @@ function App() {
               Tous
             </button>
           </div>
+
+          {filteredTodos.length > 0 ? (
+            <ul className="divide-y divide-primary/20">
+              {filteredTodos.map((todo) => (
+                <li>{todo.text}</li>
+              ))}
+            </ul>
+          ) : (
+            <div className="text-center text-gray-500">Aucune tâche</div>
+          )}
         </div>
       </div>
     </div>
