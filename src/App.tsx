@@ -14,6 +14,7 @@ function App() {
   const savedTodos = localStorage.getItem("todos");
   const initialTodos = savedTodos ? JSON.parse(savedTodos) : [];
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [filter, setFilter] = useState<priorite | "Tous">("Tous");
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -36,6 +37,8 @@ function App() {
     setPriority("Moyenne");
     console.log(newTodos);
   }
+
+  let filteredTodos: Todo[] = [];
 
   return (
     <div className="flex justify-center">
@@ -60,6 +63,18 @@ function App() {
           <button onClick={addToDo} className="btn btn-primary">
             Ajouter
           </button>
+        </div>
+        <div className="space-y-2 flex-1 h-fit">
+          <div className="flex flex-wrap gap-4">
+            <button
+              className={`btn btn-soft ${
+                filter === "Tous" ? "btn-primary" : ""
+              }`}
+              onClick={() => setFilter("Tous")}
+            >
+              Tous
+            </button>
+          </div>
         </div>
       </div>
     </div>
