@@ -16,7 +16,7 @@ const TodoItem = ({ todo }: Props) => {
   return (
     <li className="p-3">
       <div className="flex justify-between items-center">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <input
             type="checkbox"
             className="checkbox checkbox-primary checkbox-sm"
@@ -36,7 +36,7 @@ const TodoItem = ({ todo }: Props) => {
             {todo.priority}
           </span>
         </div>
-        <div className="flex gap-2">
+        <div>
           <button className="btn btn-sm btn-error btn-circle btn-soft">
             <Trash className="w-4 h-4" />
           </button>
