@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import TodoItem from "./TodoItem";
 
 type priorite = "Urgente" | "Moyenne" | "Basse";
 
@@ -84,7 +85,9 @@ function App() {
           {filteredTodos.length > 0 ? (
             <ul className="divide-y divide-primary/20">
               {filteredTodos.map((todo) => (
-                <li>{todo.text}</li>
+                <li key={todo.id}>
+                  <TodoItem todo={todo} />
+                </li>
               ))}
             </ul>
           ) : (
